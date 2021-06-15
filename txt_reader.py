@@ -20,8 +20,8 @@ class TXT_Reader:
         print(self.file.read())
 
 
-    def is_end(self)->bool:
-        return self.start >= self.end
+    def has_next(self)->bool:
+        return self.start < self.end
 
 
     def set_line_to(self, line)->None:
@@ -33,7 +33,7 @@ class TXT_Reader:
 
     def read_line(self):    # string
         result = ""
-        if not self.is_end():
+        if self.has_next():
             result = self.lines[self.start]
         self.__next_line()
         return result

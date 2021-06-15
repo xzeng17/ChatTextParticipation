@@ -1,5 +1,3 @@
-import csv
-import collections
 from txt_reader import TXT_Reader
 
 
@@ -21,9 +19,21 @@ class Roster:
         return self.start < self.total_numbers
     
 
-    def read_next()->list:
-        res = []
+    def read_next(self)->list:
+        res = []    # Last Name, First Name, NetID
+        res.append(self.last_names[self.start])
+        res.append(self.first_names[self.start])
+        res.append(self.net_IDs[self.start])
+        self.start += 1
+        return res
+
     
+    def read_all(self)->list:
+        res = [] # [[]]
+        while self.has_next():
+            res.append(self.read_next())
+        return res
+
 
     def set_to(self, num)->None:
         if num >= self.total_numbers:
@@ -32,7 +42,7 @@ class Roster:
 
 
     def extract_all(self)->None:
-        while not self.roster_txt.is_end():
+        while self.roster_txt.has_next():
             self.extract_one()
 
 
