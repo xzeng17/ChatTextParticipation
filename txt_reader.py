@@ -31,7 +31,7 @@ class TXT_Reader:
             self.start = line
 
 
-    def read_line(self):    # string
+    def read_line(self)->str:
         result = ""
         if self.has_next():
             result = self.lines[self.start]
@@ -46,10 +46,11 @@ class TXT_Reader:
         self.start += 1
     
 
-"""Define execuatables"""
+"""Executables"""
 def main():
-    tr = TXT_Reader("assets/roster.txt")
-    print(tr.read_line())
+    # tr = TXT_Reader("assets/roster.txt")
+    tr = TXT_Reader("input/demo_chat.txt")
+    print(tr.lines)
 
 
 if __name__ == "__main__":

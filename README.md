@@ -1,1 +1,1 @@
-"# Chat Text Participation" 
+# Chat Text Participation 

@@ -5,7 +5,7 @@ class CSV:
     input_name = "output/test.csv"
     output_name = "output/test2.csv"
     fields = []
-    entries = []    #[[]]
+    entries = []    #[[]]   Last name, First name, NetID, discussion 1, discussion 2...
 
     
     def read_from_file(self, filename):

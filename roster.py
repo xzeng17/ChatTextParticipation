@@ -105,7 +105,7 @@ class Roster:
         return self.total_numbers
 
 
-"""Define execuatables"""
+"""Executables"""
 def main():
     r = Roster("assets/roster.txt")
     print(r.first_names)
