@@ -1,14 +1,9 @@
 
 class TXT_Reader:
-    file = "a txt file"
-    file_name = ""
-    lines = []
-    
-    start = 0
-    end = 0
-
 
     def __init__(self, file_name):
+        self.lines = []
+        self.start = 0
         self.file_name = file_name
         self.file = open(file_name, "r", encoding='utf-8')
         self.__get_lines()
@@ -45,6 +40,7 @@ class TXT_Reader:
     
     def __next_line(self):
         self.start += 1
+    
     
     def close(self):
         self.file.close()

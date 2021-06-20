@@ -2,10 +2,10 @@ import csv
 
 
 class CSV:
-    input_name = "output/test.csv"
-    output_name = "output/test2.csv"
-    fields = []
-    entries = []    #[[]]   Last name, First name, NetID, UID, discussion 1, discussion 2...
+
+    def __init__(self):
+        fields = []
+        entries = []    #[[]]   Last name, First name, NetID, UID, discussion 1, discussion 2...
 
     
     def read_from_file(self, filename):
@@ -59,9 +59,7 @@ class CSV:
 
 """Execatables"""
 def main():
-    file = CSV()
-    file.read_from_file(file.input_name)
-    file.write_to_file_plain(file.output_name)
+    return
 
 if __name__ == "__main__":
     main()
