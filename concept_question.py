@@ -1,15 +1,13 @@
 from txt_reader import TXT_Reader
 
 class Concept_question:
-    roster = "" # Roster object
-    title = ""
-    grades = {} # {uid: str, grade: int}
 
     def __init__(self, filename):       # filename = "input/T1A.txt"
         self.input_file = TXT_Reader(filename)
         self.title = filename.split("/")[1].split(".")[0]
 
         self.extract_all_grade()
+        self.grades = {} # {uid: str, grade: int}
         self.input_file.close()
     
     def extract_all_grade(self):
