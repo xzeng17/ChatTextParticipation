@@ -2,16 +2,19 @@ from txt_reader import TXT_Reader
 
 
 class Roster:
-    roster_txt = ""
-    first_names = []
-    last_names = []
-    net_IDs = []
-    total_numbers = 0
-    start = 0
 
 
     def __init__(self, filename):
         self.roster_txt = TXT_Reader(filename)
+        self.first_names = []
+        self.last_names = []
+        self.net_IDs = []
+        self.UIDS = []
+        self.emails = []
+        self.universities = []
+        self.indexes = {}   #{Full name: int}   ex: {Xuankun Zeng: 15}
+        self.total_numbers = 0
+        self.start = 0
         self.extract_all()
     
 
@@ -24,6 +27,8 @@ class Roster:
         res.append(self.last_names[self.start])
         res.append(self.first_names[self.start])
         res.append(self.net_IDs[self.start])
+        res.append(self.UIDS[self.start])
+
         self.start += 1
         return res
 
@@ -50,55 +55,21 @@ class Roster:
         line = self.roster_txt.read_line()
         if not line or len(line) == 0:
             return
-        self.first_names.append(self.extract_firstname(line))
-        self.last_names.append(self.extract_lastname(line))
-        self.net_IDs.append(self.extract_ID(line))
+        line_list = line.split('\t')
+        if not line_list or len(line_list) < 6:
+            return
+        full_name = line_list[5]
+        first_name = full_name.split(',')[1][1:]
+        last_name = full_name.split(',')[0]
+
+        self.first_names.append(first_name)
+        self.last_names.append(last_name)
+        self.net_IDs.append(line_list[2])
+        self.universities.append(line_list[3])
+        self.UIDS.append(line_list[4])
+        self.emails.append(line_list[6][0:len(line_list[6])-1])
+        
         self.total_numbers += 1
-
-
-    def extract_lastname(self, line)->str:
-        result = []
-        idx = 0
-        while idx < len(line):
-            if str(line[idx]).isalpha():
-                for i in range(idx, len(line)):
-                    if line[i] == ',': break
-                    result.append(line[i])
-                break
-            else:
-                idx+=1
-                continue
-        return ('').join(result)    
-
-
-    def extract_firstname(self, line)->str:
-        result = []
-        idx = 0
-        while idx < len(line):
-            if line[idx] == ' ' and line[idx-1] == ',':
-                for i in range(idx+1, len(line)):
-                    if line[i] == ' ' and line[i+1] == '(': break
-                    result.append(line[i])
-                break
-            else:
-                idx+=1
-                continue
-        return ('').join(result)
-    
-
-    def extract_ID(self, line)->str:
-        result = []
-        idx = 0
-        while idx < len(line):
-            if line[idx] != '(':
-                idx+=1
-                continue
-            else:
-                for i in range(idx+1, len(line)):
-                    if (line[i] == ')'): break
-                    result.append(line[i])
-                break
-        return ('').join(result)
 
 
     def size(self)->int:
@@ -108,9 +79,7 @@ class Roster:
 """Executables"""
 def main():
     r = Roster("assets/roster.txt")
-    print(r.first_names)
     print(r.last_names)
-    print(r.net_IDs)
 
 
 if __name__ == "__main__":

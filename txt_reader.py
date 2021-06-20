@@ -10,7 +10,7 @@ class TXT_Reader:
 
     def __init__(self, file_name):
         self.file_name = file_name
-        self.file = open(file_name, "r")
+        self.file = open(file_name, "r", encoding='utf-8')
         self.__get_lines()
         self.end = len(self.lines)
 
@@ -42,9 +42,12 @@ class TXT_Reader:
     def __get_lines(self):
         self.lines = self.file.readlines()
     
+    
     def __next_line(self):
         self.start += 1
     
+    def close(self):
+        self.file.close()
 
 """Executables"""
 def main():

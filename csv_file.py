@@ -5,7 +5,7 @@ class CSV:
     input_name = "output/test.csv"
     output_name = "output/test2.csv"
     fields = []
-    entries = []    #[[]]   Last name, First name, NetID, discussion 1, discussion 2...
+    entries = []    #[[]]   Last name, First name, NetID, UID, discussion 1, discussion 2...
 
     
     def read_from_file(self, filename):
@@ -44,7 +44,20 @@ class CSV:
         print("File saved -> "+filename)
 
 
-"""Define execuatables"""
+    def append_fields(self, field):
+        self.fields.append(field)
+    
+    def add_all_cqs(self, cq_db):   # cq_db is a dict reference to the class instance of Concept_question object
+        for entry in self.entries:
+            net_id = entry[2]
+            if (net_id in cq_db):
+                entry.append(cq_db[net_id])
+            else:
+                entry.append(0)
+
+
+
+"""Execatables"""
 def main():
     file = CSV()
     file.read_from_file(file.input_name)
