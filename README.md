@@ -20,7 +20,7 @@ To load a concept question, download all graded student's grade from lon-capa   
 Put the downloaded grades in txt file and place it in input folder  <br>
 
 # Chat Participation
-$ python3 main.py chat [first chat] [second chat].txt
+$ python3 main.py chat [first chat] [second chat]   <br>
 Ex: $ python3 main.py chat chat_week1_1.txt chat_week1_2.txt
 
 Because there are two sections of discussion, I hard coded the requirement for two file names <br>
