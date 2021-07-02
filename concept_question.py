@@ -5,9 +5,9 @@ class Concept_question:
     def __init__(self, filename):       # filename = "input/T1A.txt"
         self.input_file = TXT_Reader(filename)
         self.title = filename.split("/")[1].split(".")[0]
+        self.grades = {} # {uid: str, grade: int}
 
         self.extract_all_grade()
-        self.grades = {} # {uid: str, grade: int}
         self.input_file.close()
     
     def extract_all_grade(self):

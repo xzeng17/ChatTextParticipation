@@ -4,8 +4,8 @@ import csv
 class CSV:
 
     def __init__(self):
-        fields = []
-        entries = []    #[[]]   Last name, First name, NetID, UID, discussion 1, discussion 2...
+        self.fields = []
+        self.entries = []    #[[]]   Last name, First name, NetID, UID, discussion 1, discussion 2...
 
     
     def read_from_file(self, filename):

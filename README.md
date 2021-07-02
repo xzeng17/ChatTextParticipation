@@ -4,11 +4,19 @@
 
 $ python3 main.py init
 
-Roster is downloaded from Lon-capa, under People->Users. Users' First name, Last name, netID, UID and email are extracted.  <br>
+Roster is downloaded from Lon-capa, under People->Users. Users' name, domain, netID, UID and email are extracted.  <br>
 
 Each line represent one student. <br>
 Sample format: "1		abc123	uiuc	123456789	a, bc	abc@illinois.edu"   <br>
 
+
+# Update Roster
+
+Replace the roster.txt file in assets folder <br>
+repeat init step as in Roster so that you can get a new init.csv file <br>
+Then execute update cmd <br>
+$ python3 main.py update    <br>
+Both concept_question_grades_XX20XX.csv and chat_grades_XXX20XX.csv will be updated base on the new roster. <br>
 
 # Concept question
 

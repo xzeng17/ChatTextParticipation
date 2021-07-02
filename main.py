@@ -26,7 +26,38 @@ def main():
 
         csv_file.write_to_file_plain("output/init.csv")
         return
-    
+
+    if args and args[0] == "update":
+        # update chat_grades and concept_question_grades entries with new roster file
+        chat_grades = CSV()
+        concept_question_grades = CSV()
+        chat_grades.read_from_file(chat_filename)               # old file
+        concept_question_grades.read_from_file(cq_filename)     # old file
+
+        new_chat = CSV()        # updated file
+        new_concept = CSV()     # updated file
+
+        new_chat.fields = chat_grades.fields
+        new_concept.fields = concept_question_grades.fields
+
+        for entry in chat_grades.entries:
+            UID = entry[3]
+            if roster.has_UID(UID):
+                new_chat.entries.append(entry)
+        
+        for entry in concept_question_grades.entries:
+            UID = entry[3]
+            if roster.has_UID(UID):
+                new_concept.entries.append(entry)
+
+        new_chat.write_to_file_plain(chat_filename)     # replace old file
+        new_concept.write_to_file_plain(cq_filename)    # replace old file
+        return
+
+    ########################################################################################
+    #                         filename required after this line                            #
+    ########################################################################################
+
     filename = args[1]
 
     if args and args[0] == "chat":

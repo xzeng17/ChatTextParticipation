@@ -16,6 +16,7 @@ class Roster:
         self.total_numbers = 0
         self.start = 0
         self.extract_all()
+        self.set_of_UIDS = set([])  # used for update entries if student dropped
     
 
     def has_next(self)->bool:
@@ -70,6 +71,16 @@ class Roster:
         self.emails.append(line_list[6][0:len(line_list[6])-1])
         
         self.total_numbers += 1
+
+    
+    def make_set_of_UIDS(self)->None:
+        self.set_of_UIDS = set(self.UIDS)
+    
+
+    def has_UID(self, uid)->bool:
+        if not self.set_of_UIDS:
+            self.make_set_of_UIDS()
+        return uid in self.set_of_UIDS
 
 
     def size(self)->int:
