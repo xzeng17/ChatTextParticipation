@@ -28,7 +28,8 @@ To load a concept question, download all graded student's grade from lon-capa   
     ->Content Grading                           <br>
     ->Select individual students to grade       <br>
     ->Check all and only view grades            <br>
-    ->copy and paste->file in input folder      <br>
+    ->copy and paste                            <br>
+    ->file in input folder                      <br>
 Put the downloaded grades in txt file and place it in input folder  <br>
 
 # Chat Participation
